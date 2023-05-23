@@ -11,10 +11,11 @@
 </head>
 <body>
 
+{# NAVIGATION BAR #}
 <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
     <ul class="navbar-nav col-lg-8">
         <li class="nav-item col">
-            <a class="nav-link btn btn-primary m-1 p-2" href="{% url 'index' %}">Wyniki predykcji enhancerów</a>
+            <a class="nav-link btn btn-primary m-1 p-2" href="{% url 'default_redirect' %}">Wyniki predykcji enhancerów</a>
         </li>
         <li class="nav-item col">
             <a class="nav-link btn btn-primary m-1 p-2" href="{% url 'howto' %}">Opis przygotowanej metody</a>
@@ -25,6 +26,7 @@
     </ul>
 </nav>
 
+{# CONTENT #}
 <div class="row justify-content-center">
     <div class="col-lg-8 p-3">
         {% block content %}
