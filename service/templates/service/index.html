@@ -1,25 +1,26 @@
 {% extends "service/base.html" %}
 
 {% block content %}
-        <div class="row">
-            <div class="col-lg-11">
-                <h2 class="h2 text-secondary">Wyniki predykcji enhancerów</h2>
+    {% load static %}
 
-                <h3 class="h3 text-primary">{{ chromosome }}</h3>
+    <div class="row">
+        <div class="col" style="flex-grow: 12;">
+            <h2 class="h2 text-secondary">Wyniki predykcji enhancerów - {{ chromosome }}</h2>
 
-                Wyniki uuuu!
+            <img src="{% static 'service/img/'|add:chromosome|add:'.png' %}" class="w-100" alt="Image">
 
-                {{ df|safe }}
-
-            </div>
-
-            <div class="col-lg-1">
-                <ul class="list-group">
-                    {% for chromosome in all_distinct_chromosomes %}
-                        <a href="{% url 'index' chromosome %}"
-                           class="list-group-item list-group-item-action">{{ chromosome }}</a>
-                    {% endfor %}
-                </ul>
-            </div>
+            <a href="{% url 'export' chromosome %}" download class="btn btn-secondary">
+                Pobierz dane
+            </a>
         </div>
+
+        <div class="col">
+            <ul class="list-group">
+                {% for chromosome in all_distinct_chromosomes %}
+                    <a href="{% url 'index' chromosome %}"
+                       class="list-group-item list-group-item-action">{{ chromosome }}</a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 {% endblock %}
