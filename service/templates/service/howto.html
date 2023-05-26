@@ -26,19 +26,21 @@
         wybraliśmy odpowiednie fragmenty DNA (chromosom, pozycja początkowa i końcowa).
         Następnym krokiem było usunięcie rekordów zawierających literę 'N' (oznaczającą
         że nukleotyd tam jest nieznany (z powodu niedoskonałości eksperymentu sekwencjonowania)
-        w sekwencji DNA. Następnie, zliczyliśmy częstości k-merów w sekwencji DNA, pamiętając o odwrotnej komplementarności,
-        dla k = [2,3,4,5], dzięki czemu otrzymaliśmy 4 ramki danych o odpowiednio 10, 32, 136 i 512 kolumnach.
+        w sekwencji DNA. Następnie, zliczyliśmy częstości k-merów w sekwencji DNA, pamiętając o odwrotnej
+        komplementarności,
+        dla <code>k = [2,3,4,5]</code>, dzięki czemu otrzymaliśmy cztery ramki danych o odpowiednio 10, 32, 136 i 512 kolumnach.
         </p>
     </section>
 
     <section>
         <h3 class="h3 text-secondary">Wybór klasyfikatora</h3>
-        <p>Ponieważ teraz mieliśmy ramki danych zawierające jedynie wartości numeryczne , można było przejść do trenowania
-            klasyfikatora. Wybraliśmy RandomForestClassifier, model oparty na drzewach.
+        <p class="text-justify">Ponieważ teraz mieliśmy ramki danych zawierające jedynie wartości numeryczne , można
+            było przejść do
+            trenowania klasyfikatora. Wybraliśmy <code>RandomForestClassifier</code>, model oparty na drzewach.
             Zbiór danych został podzielony na treningowy i walidacyjny, stosując proporcje 70 do 30.
             Zbiór treningowy zawierał 29059 enhancerów i 50672 nie-enhacerów, natomiast walidacyjny
             12454 enhancerów i 21717 nie-enhancerów. Następnie, na zbiorze treningowym, zastosowaliśmy metodę
-            RandomSearch, aby znaleźć optymalne hiperparametry dla każdego
+            <code>RandomSearch</code>, aby znaleźć optymalne hiperparametry dla każdego
             k, stosując 3-krotną kroswalidację.
             Użyliśmy krzywej ROC oraz wartości AUC na zbiorze walidacyjnym jako metryki,
             aby porównać otrzymane modele. Model wytrenowany na 4-merach osiągnął najlepsze wyniki
@@ -61,9 +63,9 @@
 
     <section>
         <h3 class="h3 text-secondary">Strona</h3>
-        <p>Nasz Web Sevice umożliwia wybór chromosomu z prawej strony.
-            Po kliknięciu wybranego wyświtli się wykres słupkowy, w którym na osi x jest
-            nr okna, a na osi y prawdopodobieństwo, że w danym oknie znajduje się enhancer.
+        <p>Nasz Web Service umożliwia wybór chromosomu z prawej strony.
+            Po kliknięciu wybranego wyświtli się wykres słupkowy, w którym na osi X jest
+            numer okna, a na osi Y prawdopodobieństwo, że w danym oknie znajduje się enhancer.
             W lewym dolnym rogu znajduje się przycisk "Pobierz dane",
             który umożliwia pobranie dla wybranego chromosomu danych w formacie .csv,
             gdzie znajdują się dokładne wartości prawdopodobieństw dla każdego okna.
