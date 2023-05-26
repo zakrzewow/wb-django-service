@@ -36,7 +36,7 @@
 
     <section>
         <h3 class="h3 text-secondary">Wybór klasyfikatora</h3>
-        <p class="text-justify">Ponieważ teraz mieliśmy ramki danych zawierające jedynie wartości numeryczne , można
+        <p>Ponieważ teraz mieliśmy ramki danych zawierające jedynie wartości numeryczne , można
             było przejść do
             trenowania klasyfikatora. Wybraliśmy <code>RandomForestClassifier</code>, model oparty na drzewach.
             Zbiór danych został podzielony na treningowy i walidacyjny, stosując proporcje 70 do 30.
@@ -46,8 +46,8 @@
             k, stosując 3-krotną kroswalidację.
             Użyliśmy krzywej ROC (wykres) oraz wartości AUC na zbiorze walidacyjnym jako metryki,
             aby porównać otrzymane modele. Wyniki przedstawia tabela:
-
-        <table class="table table-bordered table-hover table-condensed">
+        </p>
+        <table class="table table-bordered table-hover table-condensed small">
             <caption>Wyniki na zbiorze walidacyjnym</caption>
             <thead>
             <tr>
@@ -85,7 +85,7 @@
                 <td align="right">0.682</td>
                 <td align="right">0.674</td>
                 <td align="right">0.682</td>
-                <td align="right">0.64</td>
+                <td align="right">0.640</td>
 
             </tr>
             <tr>
@@ -100,9 +100,9 @@
             </tbody>
         </table>
 
-         <img src={% static 'service/img/roc.png' %} class="w-100" alt="Image" >
+        <img src="{% static 'service/img/roc.png' %}" class="mx-auto d-block w-50" alt="Image">
 
-        Model wytrenowany na 4-merach osiągnął najlepsze wyniki
+        <p>Model wytrenowany na 4-merach osiągnął najlepsze wyniki
             (AUC = 0.727),
             dlatego został wybrany do dalszych eksperymentów.
         </p>
