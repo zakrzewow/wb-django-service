@@ -1,6 +1,7 @@
 {% extends "service/base.html" %}
 
 {% block content %}
+    {% load static %}
     <h2 class="h2 text-secondary">Opis przygotowanej metody</h2>
 
     Kod potrzebny do przygotowania danych, wytrenowania klasyfikatora, a następnie przedstawienia wyników
@@ -28,7 +29,8 @@
         że nukleotyd tam jest nieznany (z powodu niedoskonałości eksperymentu sekwencjonowania)
         w sekwencji DNA. Następnie, zliczyliśmy częstości k-merów w sekwencji DNA, pamiętając o odwrotnej
         komplementarności,
-        dla <code>k = [2,3,4,5]</code>, dzięki czemu otrzymaliśmy cztery ramki danych o odpowiednio 10, 32, 136 i 512 kolumnach.
+        dla <code>k = [2,3,4,5]</code>, dzięki czemu otrzymaliśmy cztery ramki danych o odpowiednio 10, 32, 136 i 512
+        kolumnach.
         </p>
     </section>
 
@@ -42,8 +44,65 @@
             12454 enhancerów i 21717 nie-enhancerów. Następnie, na zbiorze treningowym, zastosowaliśmy metodę
             <code>RandomSearch</code>, aby znaleźć optymalne hiperparametry dla każdego
             k, stosując 3-krotną kroswalidację.
-            Użyliśmy krzywej ROC oraz wartości AUC na zbiorze walidacyjnym jako metryki,
-            aby porównać otrzymane modele. Model wytrenowany na 4-merach osiągnął najlepsze wyniki
+            Użyliśmy krzywej ROC (wykres) oraz wartości AUC na zbiorze walidacyjnym jako metryki,
+            aby porównać otrzymane modele. Wyniki przedstawia tabela:
+
+        <table class="table table-bordered table-hover table-condensed">
+            <caption>Wyniki na zbiorze walidacyjnym</caption>
+            <thead>
+            <tr>
+                <th title="Field #1">k-mer</th>
+                <th title="Field #2">roc auc</th>
+                <th title="Field #3">accuracy</th>
+                <th title="Field #4">precison</th>
+                <th title="Field #5">recall</th>
+                <th title="Field #6">f1</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>4-mer</td>
+                <td align="right">0.727</td>
+                <td align="right">0.694</td>
+                <td align="right">0.686</td>
+                <td align="right">0.694</td>
+                <td align="right">0.661</td>
+
+            </tr>
+            <tr>
+                <td>3-mer</td>
+                <td align="right">0.721</td>
+                <td align="right">0.691</td>
+                <td align="right">0.681</td>
+                <td align="right">0.691</td>
+                <td align="right">0.661</td>
+
+            </tr>
+            <tr>
+                <td>5-mer</td>
+                <td align="right">0.716</td>
+                <td align="right">0.682</td>
+                <td align="right">0.674</td>
+                <td align="right">0.682</td>
+                <td align="right">0.64</td>
+
+            </tr>
+            <tr>
+                <td>2-mer</td>
+                <td align="right">0.715</td>
+                <td align="right">0.682</td>
+                <td align="right">0.668</td>
+                <td align="right">0.682</td>
+                <td align="right">0.659</td>
+
+            </tr>
+            </tbody>
+        </table>
+
+         <img src={% static 'service/img/roc.png' %} class="w-100" alt="Image" >
+
+        Model wytrenowany na 4-merach osiągnął najlepsze wyniki
             (AUC = 0.727),
             dlatego został wybrany do dalszych eksperymentów.
         </p>
