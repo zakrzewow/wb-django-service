@@ -1,3 +1,5 @@
+https://github.com/zakrzewow/wb-django-service
+
 ```
 python -m venv venv
 .\venv\Scripts\activate
